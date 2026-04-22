@@ -1,24 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void E(){
-    char *entrada = "+*aba";
+
+void E(char *entrada){
 	switch(*entrada){// testa o in´ıcio da palavra
 		case '+':
 			entrada++;
-			E();
+			E(*entrada);
 			break;
 		case '*':
 			entrada++;
-			E();
+			E(*entrada);
 			break;
 		case 'a':
 			entrada++; // consome a (deriva a)
-			(); //chama o terminal E()
+			(*entrada); //chama o terminal E()
 			break;
 		case 'b':
 			entrada++; // consome b (deriva b)
-			(); // chama o terminal E()
+			(*entrada); // chama o terminal E()
 			break;
 		default:
 			printf("\nerro.");
@@ -29,7 +29,7 @@ void E(){
 int main(){
     char *entrada = "+*aba";
 	printf("analisando a entrada %s\n",entrada);
-	S(); // s´ımbolo inicial a gram´atica
+	E(entrada); // s´ımbolo inicial a gram´atica
 	// se chegou ao final da palavra, sem erro,
 	// a palavra pertence `a linguagem gerada pela gram´atica.
 	if( *entrada == '\x0')// fim de entrada
